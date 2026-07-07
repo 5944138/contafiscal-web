@@ -7,6 +7,10 @@
 <meta name="description" content="Controla tu ISR, IVA y nómina sin jerga fiscal. Importa tus facturas del SAT y sabe exactamente cuánto pagar y cuándo. Para negocios y contadores en México.">
 <meta property="og:title" content="CONTAFISCAL — Tu contabilidad, clara como el dinero">
 <meta property="og:description" content="Deja de temerle al día 17. ISR, IVA, nómina y conciliación con el SAT, en lenguaje humano.">
+<meta property="og:url" content="https://5944138.github.io/contafiscal-web/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://5944138.github.io/contafiscal-web/">
 <meta name="theme-color" content="#06231b">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23059669'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>$</text></svg>">
 <style>
@@ -200,7 +204,7 @@ nav .links a:hover{color:#fff}
 .plan h3{font-size:16px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
   color:var(--brand);margin-bottom:12px}
 .plan .price{font-size:44px;font-weight:900;letter-spacing:-1px;line-height:1}
-.plan .per{font-size:14px;color:var(--faint);margin-bottom:20px}
+.plan .per{font-size:14px;color:var(--ink-2);margin-bottom:20px}
 .plan ul{list-style:none;margin:6px 0 26px;flex:1}
 .plan li{font-size:15px;color:var(--ink-2);padding:7px 0 7px 28px;position:relative}
 .plan li::before{content:"✓";position:absolute;left:2px;color:var(--brand);font-weight:900}
@@ -209,7 +213,7 @@ nav .links a:hover{color:#fff}
 .plan .ghost2{display:block;text-align:center;font-weight:800;color:var(--brand);
   border:2px solid rgba(5,150,105,.35);border-radius:999px;padding:12px;text-decoration:none;transition:.2s}
 .plan .ghost2:hover{background:rgba(5,150,105,.08)}
-.pnote{text-align:center;margin-top:22px;font-size:13.5px;color:var(--faint)}
+.pnote{text-align:center;margin-top:22px;font-size:13.5px;color:var(--ink-2)}
 
 /* ══════════════ FAQ ══════════════ */
 .faq details{background:#fff;border:1px solid var(--line);border-radius:18px;
@@ -231,9 +235,9 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between;
 footer .fine{max-width:68ch;line-height:1.55}
 
 /* ══════════════ REVEAL ══════════════ */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),
   transform .7s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
+.js .rv.in{opacity:1;transform:none}
 .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}
 .rv{opacity:1;transform:none}}
@@ -411,7 +415,7 @@ footer .fine{max-width:68ch;line-height:1.55}
           <li>Hoja de captura casilla por casilla</li>
           <li>Respaldo automático semanal</li>
         </ul>
-        <a class="ghost2" href="mailto:manzanillocesar@gmail.com?subject=CONTAFISCAL%20—%20Plan%20Mi%20negocio">Pedir acceso</a>
+        <a class="ghost2" href="mailto:manzanillocesar@gmail.com?subject=CONTAFISCAL%20-%20Plan%20Mi%20negocio">Pedir acceso</a>
       </div>
       <div class="plan pro rv d1">
         <span class="pop">EL FAVORITO</span>
@@ -425,7 +429,7 @@ footer .fine{max-width:68ch;line-height:1.55}
           <li>Cambia de cliente en un clic</li>
           <li>Soporte prioritario</li>
         </ul>
-        <a class="cta" href="mailto:manzanillocesar@gmail.com?subject=CONTAFISCAL%20—%20Plan%20Contador">Quiero este →</a>
+        <a class="cta" href="mailto:manzanillocesar@gmail.com?subject=CONTAFISCAL%20-%20Plan%20Contador">Quiero este →</a>
       </div>
       <div class="plan rv d2">
         <h3>Mi empresa</h3>
@@ -437,7 +441,7 @@ footer .fine{max-width:68ch;line-height:1.55}
           <li>Pérdidas fiscales y PTU en tu base</li>
           <li>Cierre de ejercicio con checklist</li>
         </ul>
-        <a class="ghost2" href="mailto:manzanillocesar@gmail.com?subject=CONTAFISCAL%20—%20Plan%20Mi%20empresa">Pedir acceso</a>
+        <a class="ghost2" href="mailto:manzanillocesar@gmail.com?subject=CONTAFISCAL%20-%20Plan%20Mi%20empresa">Pedir acceso</a>
       </div>
     </div>
     <p class="pnote rv">Precios de lanzamiento en MXN + IVA · escríbenos y te activamos el mismo día</p>
@@ -496,6 +500,10 @@ footer .fine{max-width:68ch;line-height:1.55}
 </footer>
 
 <script>
+// Reveal solo si hay JS + IntersectionObserver (si no, todo queda visible)
+if ('IntersectionObserver' in window) {
+  document.documentElement.classList.add('js');
+}
 // Nav con vidrio al hacer scroll
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>40),{passive:true});
